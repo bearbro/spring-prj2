@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="item1" class="cn.edu.zjut.bean.Item">
+        <constructor-arg index="0" type="java.lang.String">
+            <value>978-7-121-12345-1</value>
+        </constructor-arg>
+        <constructor-arg index="1" type="java.lang.String">
+            <value>JAVAEE 技术实验指导教程</value>
+        </constructor-arg>
+        <constructor-arg index="2" type="java.lang.String">
+            <value>WEB 程序设计知识回顾、轻量级JAVAEE 应用框架、企业级EJB 组件编程技术、JAVAEE 综合应用开发</value>
+        </constructor-arg>
+        <constructor-arg index="3" type="double">
+            <value>19.95</value>
+        </constructor-arg>
+    </bean>
+    <bean id="item2" class="cn.edu.zjut.bean.Item">
+        <constructor-arg index="0" type="java.lang.String">
+            <value>978-7-121-12345-2</value>
+        </constructor-arg>
+        <constructor-arg index="1" type="java.lang.String">
+            <value>JAVAEE 技术</value>
+        </constructor-arg>
+        <constructor-arg index="2" type="java.lang.String">
+            <value>Struts 框架、Hibernate 框架、Spring 框架、会话Bean、实体Bean、消息驱动Bean</value>
+        </constructor-arg>
+        <constructor-arg index="3" type="double">
+            <value>29.95</value>
+        </constructor-arg>
+    </bean>
+</beans>
+    <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+        <!--<property name="driverClassName"-->
+                  <!--value="com.mysql.jdbc.Driver"/>-->
+        <!--<property name="url"-->
+                  <!--value="jdbc:mysql://localhost:3306/hibernatedb"/>-->
+        <!--<property name="username" value="dbuser"/>-->
+        <!--<property name="password" value="dbpassword"/>-->
+    <!--</bean>-->
+
+
+
+    <!--<bean id="sessionFactory"-->
+          <!--class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+        <!--<property name="hibernateProperties">-->
+            <!--<props>-->
+                <!--<prop key="hibernate.dialect">-->
+                    <!--org.hibernate.dialect.MySQLDialect-->
+                <!--</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+        <!--<property name="mappingResources">-->
+            <!--<list>-->
+                <!--<value>cn/edu/zjut/po/Customer.hbm.xml</value>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--<bean id="baseDAO" class="cn.edu.zjut.dao.BaseHibernateDAO">-->
+        <!--<property name="sessionFactory" ref="sessionFactory" />-->
+    <!--</bean>-->
+    <!--<bean id="userDAO" class="cn.edu.zjut.dao.CustomerDAO"-->
+          <!--parent="baseDAO"/>-->
+    <!--<bean id="userService" class="cn.edu.zjut.service.UserService">-->
+        <!--<property name="customerDAO" ref="userDAO"/>-->
+    <!--</bean>-->
+    <!--<bean id="userAction" class="cn.edu.zjut.action.UserAction" scope="prototype">-->
+        <!--<property name="userService" ref="userService" />-->
+    <!--</bean>-->
+<!--</beans>-->
