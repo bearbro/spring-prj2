@@ -1,6 +1,9 @@
 package cn.edu.zjut.bean;
 
-public class ItemOrder implements IItemOrder {
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
+public class ItemOrder implements IItemOrder,InitializingBean,DisposableBean {
     private IItem item;
     private int numItems;
 
@@ -21,6 +24,7 @@ public class ItemOrder implements IItemOrder {
     }
 
     public void setItem(IItem item) {
+        System.out.println("Spring 注入item...");
         this.item = item;
     }
 
@@ -29,11 +33,32 @@ public class ItemOrder implements IItemOrder {
     }
 
     public void setNumItems(int numItems) {
+        System.out.println("Spring 注入numItems...");
         this.numItems = numItems;
     }
-
     public double getUnitCost() {
         return item.getCost();
+    }
+
+    public ItemOrder() {
+        System.out.println("Spring 实例化ItemOrder...");
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("正在执行初始化方法afterPropertiesSet...");
+    }
+
+    public void init() {
+        System.out.println("正在执行初始化方法init...");
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("正在执行bean销毁之前的方法destroy...");
+    }
+    public void myDestroy() throws Exception {
+        System.out.println("正在执行bean销毁之前的方法myDestroy...");
     }
 }
 

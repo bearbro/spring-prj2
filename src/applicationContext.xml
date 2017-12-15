@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="item1" class="cn.edu.zjut.bean.Item">
+    <bean id="item1" class="cn.edu.zjut.bean.Item" scope="singleton">
         <constructor-arg index="0" type="java.lang.String">
             <value>978-7-121-12345-1</value>
         </constructor-arg>
@@ -18,7 +18,7 @@
             <value>19.95</value>
         </constructor-arg>
     </bean>
-    <bean id="item2" class="cn.edu.zjut.bean.Item">
+    <bean id="item2" class="cn.edu.zjut.bean.Item" scope="prototype">
         <constructor-arg index="0" type="java.lang.String">
             <value>978-7-121-12345-2</value>
         </constructor-arg>
@@ -33,7 +33,8 @@
         </constructor-arg>
     </bean>
 
-    <bean id="itemorder1" class="cn.edu.zjut.bean.ItemOrder">
+    <bean id="itemorder1" class="cn.edu.zjut.bean.ItemOrder" init-method="init"
+          destroy-method="myDestroy">
         <property name="numItems">
             <value>1</value>
         </property>
@@ -41,14 +42,15 @@
             <ref bean="item1"/>
         </property>
     </bean>
-    <bean id="itemorder2" class="cn.edu.zjut.bean.ItemOrder">
-        <property name="numItems">
-            <value>2</value>
-        </property>
-        <property name="item">
-            <ref bean="item2"/>
-        </property>
+    <bean id="itemorderFactory"
+          class="cn.edu.zjut.bean.ItemOrderFactory"/>
+    <bean id="itemorder2" class="cn.edu.zjut.bean.ItemOrder"
+          factory-method="createItemOrder"
+          factory-bean="itemorderFactory">
+        <property name="numItems"> <value>1</value> </property>
+        <property name="item"> <ref bean="item1"/> </property>
     </bean>
+
 
     <bean id="shoppingcart" class="cn.edu.zjut.bean.ShoppingCart">
         <property name="itemsOrdered">
@@ -62,6 +64,7 @@
             </map>
         </property>
     </bean>
+
 </beans>
         <!--<map>-->
         <!--<entry key="1" value-ref="itemorder1" />-->
